@@ -1,0 +1,56 @@
+---
+type Props = {
+  title?: string;
+  as?: "section" | "article";
+  id?: string;
+  class?: string;
+};
+
+const {
+  title,
+  as = "section",
+  id,
+  class: className = "",
+} = Astro.props;
+
+const Tag = as;
+const classes = ["section", className].filter(Boolean).join(" ");
+---
+
+<Tag id={id} class={classes}>
+  {title ? <h1 class="section-title">{title}</h1> : null}
+  <div class="section-contents">
+    <slot />
+  </div>
+</Tag>
+
+<style>
+  .section {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border: 1px solid var(--border);
+    color: #7f7f7f;
+    line-height: 1.25;
+    font-size: 15px;
+  }
+
+  .section-contents {
+    padding: 16px;
+  }
+
+  .section-title {
+    position: relative;
+    margin: 0;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    color: #7f7f7f;
+    font-size: 15px;
+    font-family: var(--font-small);
+    text-transform: uppercase;
+    padding: 6px 112px;
+    border-bottom: 1px solid var(--border);
+  }
+</style>

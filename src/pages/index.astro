@@ -1,9 +1,90 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Greeting from '../components/Greeting';
-const pageTitle = "Home Page";
+import Section from "../components/section.astro";
+
+const pageTitle = "Home Page (ALL WORK IN PROGRESS)";
 ---
 <BaseLayout pageTitle={pageTitle}>
-  <h2>My awesome blog subtitle</h2>
-  <Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} />
+  <main>
+  <div id="content">
+      <div class="left-column">
+        <Section as="article" title="Welcomes!1^1">
+          <Greeting client:load messages={["Technical Artist", "Dark Wizard", "3D-Generalist", "Tech Artist", "guy who solves weird problems"]} />
+          <br />
+          I'm interested in Shader Tricks and Pipeline Optimization for
+          video game projects and interactive software wherever a computer is rendering objects to.
+        </Section>
+
+        <Section as="article" title="Section with Whimsy">
+          <h2>tehehe</h2>
+          adding an image here!<br />
+          <img src="/public/imgs/halflife.gif" alt="[hl banner gif]"/>this is just text after the image lol <br />
+          i need to adjust sm still pls dont looks at this
+        </Section>
+
+        </div>
+        <aside class="right-column">
+
+        <Section as="article" id="socials" title="socials">
+          <ul>
+            <li><a href="https://github.com/weltraumimport/" target="_blank" rel="noreferrer noopener">GitHub - weltraumimport</a></li>
+            <li><a href="https://bsky.app/profile/weltraumimport.bsky.social" target="_blank" rel="noreferrer noopener">Bluesky - @weltraumimport</a></li>
+            <li><a href="https://linktr.ee/weltraumimport" target="_blank" rel="noreferrer noopener">Linktree - weltraumimport</a></li>
+            <li><a href="https://weltraumimport.itch.io/" target="_blank" rel="noreferrer noopener">itch.io - weltraumimport</a></li>
+          </ul>
+        </Section>
+
+        <Section as="article" title="Box 2">
+          <h2>lets go!!</h2>
+          this is a second box for whatever info i wanna add.
+          <ul>
+            <li>list1</li>
+            <li>list 2</li>
+            <li>list entry 3</li>
+            <li>nya</li>
+          </ul>
+          i can write so much in here and nobody can stop me
+        </Section>
+
+      </aside>
+      </div>
+  </main>
+
+   <style>
+    .left-column {
+      display: flex;
+      flex-direction: column;
+      flex: 1 1 auto;
+      gap: 16px;
+    }
+
+    aside {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      flex: 0 0 auto;
+      width: 300px;
+    }
+
+    #socials ul {
+      margin: 0;
+    }
+
+    #content {
+      display: flex;
+      gap: 16px;
+      width: 100%;
+      margin-top: 16px;
+    }
+
+    @media only screen and (max-width: 728px) {
+      #content {
+        flex-direction: column;
+      }
+      aside {
+        width: 100%;
+      }
+    }
+  </style>
 </BaseLayout>
